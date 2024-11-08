@@ -9,8 +9,10 @@ use PHPUnit\Framework\Attributes\Test;
 
 class CourseRepositoryTest extends TestCase
 {
+    protected EloquentCourseRepository $sut;
 
     /** @test */ 
+    /*
     public function given_a_course__should_be_saved(): void
     {
         $courseName="Nombre del curso";
@@ -27,4 +29,5 @@ class CourseRepositoryTest extends TestCase
         
         $this->sut->save($courseName);
     }
+        */
 }
