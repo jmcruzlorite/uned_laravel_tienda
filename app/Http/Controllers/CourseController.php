@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -21,7 +22,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.create');
     }
 
     /**
@@ -29,7 +30,14 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        Course::create([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect(route('course.index'))
+            ->with('flash.banner', 'Se ha creado el curso');
     }
 
     /**
